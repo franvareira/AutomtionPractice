@@ -39,4 +39,13 @@ public class ResultadoPesquisaPage {
     	return verificaCarButton;
     }
 	
+    public WebElement checkoutButton() {
+    	WebElement checkoutButton = this.driver.findElement(By.xpath("//a[@class='btn btn-default button button-medium']"));
+    	return checkoutButton;
+    }
+    
+    public WebElement verificaCheckout(){
+    	WebElement verificaCheckout = this.driver.findElement(By.xpath("//div[@id='center_column']/ul[@id='order_step']/li/span/em"));
+    	return verificaCheckout;
+    }
 }

@@ -8,6 +8,7 @@ import java.io.IOException;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
+import compraPracticeController.CheckoutController;
 import compraPracticeController.HomeController;
 import compraPracticeController.ResultadoPesquisaController;
 import compraPracticeUtils.BaseTest;
@@ -29,6 +30,7 @@ public class comprarProdutoTestCase extends BaseTest {
 		
 		HomeController homecontroller = new HomeController(driver);
 		ResultadoPesquisaController resultadopesquisacontroller = new ResultadoPesquisaController(driver);
+		CheckoutController checkoutcontroller = new CheckoutController(driver);
 		
 		logger.info("Start Aplicattion");
 		homecontroller.pesquisarProduto();
@@ -38,6 +40,12 @@ public class comprarProdutoTestCase extends BaseTest {
 		resultadopesquisacontroller.adicionarCarrinho();
 		logger.pass("Produto adicionado no carrinho com sucesso");
 		logger.addScreenCaptureFromPath(Utils.captureScreenshot(this.getDriver()));
+		logger.pass("Pagina checkout carrinho carregada");
+		checkoutcontroller.ProceedCheckout();
+		logger.pass("Pagina proceed checkout carregada");
+		logger.addScreenCaptureFromPath(Utils.captureScreenshot(this.getDriver()));
+		
+		
 		
 	}
 }

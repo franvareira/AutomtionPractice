@@ -35,7 +35,7 @@ public class ResultadoPesquisaController {
 	
 	public void selecionarProduto() throws InterruptedException, IOException {
 		
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		pageResultadoPesquisa.selecionarImage().click();
 		Thread.sleep(1000);
 		String verifica = pageResultadoPesquisa.verificaPage().getText();
@@ -49,6 +49,18 @@ public class ResultadoPesquisaController {
 		Thread.sleep(1000);
 		String verifica = pageResultadoPesquisa.verificaCarButton().getText();
 		assertEquals(verifica, "Product successfully added to your shopping cart");
+		pageResultadoPesquisa.checkoutButton().click();
+		validationCheckout();
 		
 	}
+	
+	public void validationCheckout () {
+		try {
+		String validation = pageResultadoPesquisa.verificaCheckout().getText();
+		assertEquals(validation,"01.");
+	}catch (Exception ex) {
+		
+		logger.fail("Assert falhou");
+	}
+  }
 }
